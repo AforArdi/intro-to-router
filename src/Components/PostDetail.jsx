@@ -1,8 +1,14 @@
-import { useLoaderData, useNavigate } from "react-router";
+import { useLoaderData, useNavigate, useParams } from "react-router";
 
 const PostDetail = () => {
     const posts = useLoaderData();
     const navigate = useNavigate();
+
+    // const params = useParams();
+    // this line bottom is direct destructuring of the above line
+    const {postId} = useParams();
+    console.log(postId);
+
     return ( 
         <div>
             <h2>{posts.title}</h2>
