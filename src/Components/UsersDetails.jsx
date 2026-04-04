@@ -1,7 +1,12 @@
+import { useLoaderData } from "react-router";
+
 const UsersDetails = () => {
+    const user = useLoaderData();
+    
     return ( 
         <div>
-            <h2>Users Details Here</h2>
+            <p>Username: {user.username}</p>
+            <p>Email: {user.email}</p>
         </div>
      );
 }
