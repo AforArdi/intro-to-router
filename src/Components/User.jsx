@@ -1,5 +1,5 @@
 import { Suspense, useState } from "react";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import UsersDetails from "./UsersDetails";
 import ShowHideDetails from "./ShowHideDetails";
 
@@ -7,6 +7,12 @@ const User = ({user}) => {
     const {id, name, email, username} = user;
     const navigate = useNavigate();
     const [showInfo, setShowInfo] = useState(false);
+    const [goHome, setGoHome] = useState(false);
+
+    if(goHome){
+        return <Navigate to='/'></Navigate>
+    }
+
 
     const usersPromise = fetch(`https://jsonplaceholder.typicode.com/users/${id}`).then(res=> res.json());
 
@@ -26,6 +32,7 @@ const User = ({user}) => {
                     ></ShowHideDetails>
                 </Suspense>
             }
+            <button onClick={()=> setGoHome(true)} className="btn btn-soft">Go Home</button>
         </div>
      );
 }
